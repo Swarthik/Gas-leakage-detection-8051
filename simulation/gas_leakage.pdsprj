@@ -1,1 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LABCENTER_SCHEMATIC_DESIGN version="1.1">
 
+  <SETTINGS>
+    <setting name="TITLE"    value="Gas Leakage Detection System"/>
+    <setting name="AUTHOR"   value="Bhavani B - IJT23EC019"/>
+    <setting name="REVISION" value="1.0"/>
+    <setting name="GRIDSIZE" value="50"/>
+    <setting name="SIMMODEL" value="PROSPICE"/>
+  </SETTINGS>
+
+  <COMPONENTS>
+
+    <COMP type="AT89C51" id="U1" x="500" y="400">
+      <PROP name="PROGRAM"   value="gas_leakage.hex"/>
+      <PROP name="CLOCK"     value="11059200"/>
+      <PROP name="ROMSIZE"   value="4096"/>
+    </COMP>
+
+    <COMP type="VSOURCE" id="GAS1" x="100" y="400">
+      <PROP name="VOLTAGE"   value="0"/>
+      <PROP name="DC"        value="0V"/>
+      <PROP name="LABEL"     value="MQ-2 GAS SENSOR"/>
+    </COMP>
+
+    <COMP type="ADC0808" id="ADC1" x="300" y="400">
+      <PROP name="VREF+"     value="5"/>
+      <PROP name="VREF-"     value="0"/>
+    </COMP>
+
+    <COMP type="LM016L" id="LCD1" x="150" y="650">
+      <PROP name="ROWS"      value="2"/>
+      <PROP name="COLS"      value="16"/>
+    </COMP>
+
+    <COMP type="BUZZER" id="BZ1" x="750" y="300">
+      <PROP name="FREQUENCY" value="2400"/>
+      <PROP name="VOLTAGE"   value="5"/>
+    </COMP>
+
+    <COMP type="LED-YELLOW" id="D1" x="750" y="200">
+      <PROP name="COLOR"     value="YELLOW"/>
+    </COMP>
+
+    <COMP type="RES" id="R1" x="700" y="200">
+      <PROP name="VALUE"     value="220"/>
+    </COMP>
+
+    <COMP type="CRYSTAL" id="X1" x="420" y="250">
+      <PROP name="FREQUENCY" value="11059200"/>
+    </COMP>
+
+    <COMP type="CAP" id="C1" x="390" y="230">
+      <PROP name="VALUE"     value="33p"/>
+    </COMP>
+
+    <COMP type="CAP" id="C2" x="450" y="230">
+      <PROP name="VALUE"     value="33p"/>
+    </COMP>
+
+    <COMP type="CAP" id="C3" x="390" y="330">
+      <PROP name="VALUE"     value="10u"/>
+    </COMP>
+
+    <COMP type="RES" id="R2" x="430" y="330">
+      <PROP name="VALUE"     value="10k"/>
+    </COMP>
+
+    <COMP type="POWER"  id="VCC"  x="500" y="100">
+      <PROP name="VALUE" value="5V"/>
+    </COMP>
+
+    <COMP type="GROUND" id="GND1" x="500" y="750"/>
+
+  </COMPONENTS>
+
+  <NETS>
+    <NET from="GAS1:OUT"  to="ADC1:IN0"/>
+
+    <NET from="ADC1:D0"   to="U1:P0.0"/>
+    <NET from="ADC1:D1"   to="U1:P0.1"/>
+    <NET from="ADC1:D2"   to="U1:P0.2"/>
+    <NET from="ADC1:D3"   to="U1:P0.3"/>
+    <NET from="ADC1:D4"   to="U1:P0.4"/>
+    <NET from="ADC1:D5"   to="U1:P0.5"/>
+    <NET from="ADC1:D6"   to="U1:P0.6"/>
+    <NET from="ADC1:D7"   to="U1:P0.7"/>
+
+    <NET from="U1:P2.4"   to="ADC1:ALE"/>
+    <NET from="U1:P2.5"   to="ADC1:START"/>
+    <NET from="ADC1:EOC"  to="U1:P2.6"/>
+    <NET from="U1:P2.7"   to="ADC1:OE"/>
+
+    <NET from="U1:P1.0"   to="LCD1:D0"/>
+    <NET from="U1:P1.1"   to="LCD1:D1"/>
+    <NET from="U1:P1.2"   to="LCD1:D2"/>
+    <NET from="U1:P1.3"   to="LCD1:D3"/>
+    <NET from="U1:P1.4"   to="LCD1:D4"/>
+    <NET from="U1:P1.5"   to="LCD1:D5"/>
+    <NET from="U1:P1.6"   to="LCD1:D6"/>
+    <NET from="U1:P1.7"   to="LCD1:D7"/>
+
+    <NET from="U1:P2.0"   to="LCD1:RS"/>
+    <NET from="U1:P2.1"   to="LCD1:RW"/>
+    <NET from="U1:P2.2"   to="LCD1:EN"/>
+
+    <NET from="U1:P3.7"   to="BZ1:+"/>
+    <NET from="BZ1:-"     to="GND1:GND"/>
+
+    <NET from="U1:P3.6"   to="R1:A"/>
+    <NET from="R1:B"      to="D1:A"/>
+    <NET from="D1:K"      to="GND1:GND"/>
+
+    <NET from="X1:A"      to="U1:XTAL1"/>
+    <NET from="X1:B"      to="U1:XTAL2"/>
+    <NET from="X1:A"      to="C1:A"/>
+    <NET from="X1:B"      to="C2:A"/>
+    <NET from="C1:B"      to="GND1:GND"/>
+    <NET from="C2:B"      to="GND1:GND"/>
+
+    <NET from="VCC:+"     to="R2:A"/>
+    <NET from="R2:B"      to="U1:RST"/>
+    <NET from="U1:RST"    to="C3:A"/>
+    <NET from="C3:B"      to="GND1:GND"/>
+
+    <NET from="VCC:+"     to="U1:VCC"/>
+    <NET from="VCC:+"     to="ADC1:VCC"/>
+    <NET from="VCC:+"     to="LCD1:VDD"/>
+    <NET from="GND1:GND"  to="U1:GND"/>
+    <NET from="GND1:GND"  to="ADC1:GND"/>
+    <NET from="GND1:GND"  to="LCD1:VSS"/>
+  </NETS>
+
+</LABCENTER_SCHEMATIC_DESIGN>
