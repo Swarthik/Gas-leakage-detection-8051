@@ -1,5 +1,5 @@
-# Gas Leakage Detection System 🔴
-> BEC405A — Microcontrollers 8051 | Jyothy Institute of Technology
+# Gas Leakage Detection System
+
 
 A real-time gas leakage detection system built using the **AT89C51 (8051)
 microcontroller**, **MQ-2 gas sensor**, and **ADC0808**. Detects LPG/methane
@@ -7,7 +7,7 @@ leaks and instantly alerts via buzzer, LED, and 16x2 LCD display.
 
 ---
 
-## 📌 Features
+## Features
 - Real-time gas concentration monitoring
 - Visual alert on 16x2 LCD (SAFE / GAS DETECTED)
 - Audio + LED alert on threshold breach
@@ -16,7 +16,7 @@ leaks and instantly alerts via buzzer, LED, and 16x2 LCD display.
 
 ---
 
-## 🔧 Hardware Components
+## Hardware Components
 | Component            | Quantity | Cost (₹) |
 |----------------------|----------|-----------|
 | AT89C51 Microcontroller | 1     | 80        |
@@ -29,7 +29,7 @@ leaks and instantly alerts via buzzer, LED, and 16x2 LCD display.
 
 ---
 
-## 🗂️ Repository Structure
+## Repository Structure
 ```
 gas-leakage-detection-8051/
 ├── src/                  # Embedded C source code
@@ -53,7 +53,7 @@ gas-leakage-detection-8051/
 
 ---
 
-## 🚀 How to Run
+## How to Run
 1. Open `simulation/gas_leakage.pdsprj` in **Proteus**
 2. Load `simulation/gas_leakage.hex` into the AT89C51
 3. Run simulation — adjust MQ-2 sensor value above `100` to trigger alert
@@ -65,32 +65,13 @@ To recompile:
 
 ---
 
-## 📊 Test Results
+## Test Results
 | Test | Condition       | LCD Output   | Buzzer/LED |
 |------|-----------------|--------------|------------|
 | 1    | Clean air       | SAFE         | OFF        |
 | 2    | Near LPG lighter| GAS DETECTED | ON         |
 | 3    | Ventilated area | SAFE         | OFF        |
 
----
 
-## 👥 Team
-| Name            | USN         | Role                        |
-|-----------------|-------------|-----------------------------|
-| Bhavani B       | IJT23EC019  | Circuit Design, Hardware    |
-| Ananya Deepak   | IJT23EC014  | Components, Research        |
-| B Swarthik      | IJT23EC016  | Coding, Simulation          |
-| Deeksha S       | IJT23EC026  | Documentation, Presentation |
-
-**Guide:** Dayananda L N, Assistant Professor, Dept. of ECE, JIT
-
----
-
-## 📚 References
-- Mazidi, M.A. et al., *The 8051 Microcontroller and Embedded Systems*
-- [Keil MDK](https://www.keil.com)
-- TutorialsPoint: Interfacing MQ2 with 8051
-
----
 
 *Jyothy Institute of Technology, Bangalore | Academic Year 2024–25*
