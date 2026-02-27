@@ -29,15 +29,6 @@ leaks and instantly alerts via buzzer, LED, and 16x2 LCD display.
 
 ---
 
-## 📐 Block Diagram
-```
-MQ-2 Sensor → ADC0808 → 8051 Microcontroller
-                              ↓         ↓        ↓
-                           16x2 LCD   Buzzer    LED
-```
-
----
-
 ## 🗂️ Repository Structure
 ```
 gas-leakage-detection-8051/
